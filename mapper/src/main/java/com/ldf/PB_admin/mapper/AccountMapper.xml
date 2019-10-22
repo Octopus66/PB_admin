@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ldf.PB_admin.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.ldf.PB_admin.pojo.Account" >
+    <constructor >
+      <idArg column="id_card" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="pwd" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uname" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id_card, phone, pwd, uname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where id_card = #{idCard,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from account
+    where id_card = #{idCard,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ldf.PB_admin.pojo.Account" >
+    insert into account (id_card, phone, pwd, 
+      uname)
+    values (#{idCard,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{pwd,jdbcType=VARCHAR}, 
+      #{uname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ldf.PB_admin.pojo.Account" >
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idCard != null" >
+        #{idCard,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ldf.PB_admin.pojo.Account" >
+    update account
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_card = #{idCard,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ldf.PB_admin.pojo.Account" >
+    update account
+    set phone = #{phone,jdbcType=CHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR}
+    where id_card = #{idCard,jdbcType=CHAR}
+  </update>
+</mapper>
