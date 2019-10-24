@@ -39,5 +39,10 @@
             <artifactId>druid</artifactId>
         </dependency>
 
+        <!--jsr303后端数据验证-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
     </dependencies>
 </project>

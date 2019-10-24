@@ -1,12 +1,16 @@
 package com.ldf.PB_admin.pojo;
 
+import javax.validation.constraints.NotNull;
+
 public class Account {
+
+    @NotNull(message = "身份证号不能为空")
     private String idCard;
-
+    @NotNull(message = "手机号不能为空")
     private String phone;
-
+    @NotNull(message = "密码不能为空")
     private String pwd;
-
+    @NotNull(message = "姓名不能为空")
     private String uname;
 
     public Account(String idCard, String phone, String pwd, String uname) {

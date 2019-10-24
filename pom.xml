@@ -27,6 +27,7 @@
         <servlet.version>2.5</servlet.version>
         <jsp.version>2.0</jsp.version>
         <tomcat.version>2.2</tomcat.version>
+        <hibernate-validate.version>5.4.1.Final</hibernate-validate.version>
     </properties>
 
     <!--依赖包管理-->
@@ -100,6 +101,13 @@
                 <artifactId>servlet-api</artifactId>
                 <version>${servlet.version}</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <!--jsr303后端数据验证-->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validate.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
